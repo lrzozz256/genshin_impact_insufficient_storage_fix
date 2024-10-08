@@ -46,13 +46,13 @@ sleep 3
 f="/sdcard/cache_versions_$(echo $cc)"
 echo "Generating ${f}..."
 sleep 2
-ls /sdcard/Android/data/com.miHoYo.GenshinImpact/files/AssetBundles/blocks/00/ | tee "$file"
-sed -i "s/^/AssetBundles\/blocks\/00\//" "$file"
-sed -i "2i hardware_model_config.json" "$file"
+ls /sdcard/Android/data/com.miHoYo.GenshinImpact/files/AssetBundles/blocks/00/ | tee "$f"
+sed -i "s/^/AssetBundles\/blocks\/00\//" "$f"
+sed -i "2i hardware_model_config.json" "$f"
 sleep 2
 echo "Clean up generated file..."
 sleep 1
-grep -v "\.tmp$" "$file" | sed -i "/\.tmp$/d" "$file"
-sed -i 's/\r//g' "$file"
-sed -i '/^$/d' "$file" && printf %s "$(cat "$file")" > "$file"
+grep -v "\.tmp$" "$f" | sed -i "/\.tmp$/d" "$f"
+sed -i 's/\r//g' "$f"
+sed -i '/^$/d' "$f" && printf %s "$(cat "$f")" > "$f"
 echo "Done! Paste the file into your Genshin Impact folder, and enjoy:)"
